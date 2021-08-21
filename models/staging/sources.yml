@@ -7,12 +7,21 @@ sources:
       - name: employee
         description: Essa é a tabela de funcionários do ERP.
         
+      - name: address
+        description: Essa é a tabela de endereço do ERP.
+        
       - name: countryregion
         description: Essa é a tabela de país do ERP.
 
       - name: person
         description: Essa é a tabela de pessoas do ERP.
+      
+      - name: businessentitycontact
+        description: Essa é a tabela de contato da entidade de negócio do ERP.
 
+      - name: businessentityaddress
+        description: Essa é a tabela de endereço da entidade de negócio do ERP.
+        
       - name: stateprovince
         description: Essa é a tabela de estados do ERP.
 
