@@ -6,7 +6,7 @@ with cabecalho_pedido as (
     currencyrateid as id_taxa_cambio,
     shipmethodid as id_metodo_entrega,
     territoryid as id_territorio,
-    creditcardid as id_cartao_credito,
+    creditcardid as fk_cartao_credito,
     purchaseordernumber as numero_ordem_compra,
     billtoaddressid	as id_endereco_cobranca,
     modifieddate as data_modificacao_cabecalho_pedido,
@@ -26,6 +26,14 @@ with cabecalho_pedido as (
 
     from {{source('desafio_final_aw','salesorderheader')}}
 ),
+
+    dados_cartao as(
+    select
+    cardtype as tipo_cartao,
+    creditcardid as id_cartao_credito
+    from {{source('desafio_final_aw','creditcard')}}
+),
+
     cabecalho_motivo_vendas as (
         select
         salesreasonid as fk_motivo_venda,
@@ -49,7 +57,7 @@ with cabecalho_pedido as (
             cp.id_vendedor,
             cp.id_cliente,
             cp.id_territorio,
-            cp.id_cartao_credito,
+            --cp.fk_cartao_credito,
             cp.numero_ordem_compra,
             cp.id_endereco_cobranca,
             cp.id_endereco_entrega,
@@ -60,8 +68,10 @@ with cabecalho_pedido as (
             cp.data_vencimento,
             cp.valor_final,
             cp.data_entrega,
-            cm.fk_motivo_venda,
-            cm.fk_pedido,
+            dc.tipo_cartao,
+            dc.id_cartao_credito,
+            --cm.fk_motivo_venda,
+            --cm.fk_pedido,
             mv.tipo_motivo,	
             mv.nome_motivo_venda,
             mv.id_motivo_venda
@@ -69,6 +79,8 @@ with cabecalho_pedido as (
         from cabecalho_pedido cp
         left join cabecalho_motivo_vendas cm
         on cm.fk_pedido = cp.id_pedido
+        left join dados_cartao dc
+        on cp.fk_cartao_credito = dc.id_cartao_credito
         left join motivo_venda mv
         on cm.fk_motivo_venda = mv.id_motivo_venda
     ) 

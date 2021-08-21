@@ -1,0 +1,5 @@
+with dados_motivo_venda as (
+    select *
+      from {{ref ('stg_salesorderhearder')}}
+)
+select * from dados_motivo_venda
