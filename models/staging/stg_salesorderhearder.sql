@@ -9,7 +9,7 @@ with cabecalho_pedido as (
     creditcardid as fk_cartao_credito,
     purchaseordernumber as numero_ordem_compra,
     billtoaddressid	as id_endereco_cobranca,
-    modifieddate as data_modificacao_cabecalho_pedido,
+    cast (modifieddate as date) as data_modificacao_cabecalho_pedido,
     taxamt as mt_taxa,
     shiptoaddressid as id_endereco_entrega,
     onlineorderflag	as pedido_online,
@@ -38,14 +38,14 @@ with cabecalho_pedido as (
         select
         salesreasonid as fk_motivo_venda,
         salesorderid as fk_pedido,
-        modifieddate as data_modificacao_cabecalho_motivo_vendas
+        cast (modifieddate as date) as data_modificacao_cabecalho_motivo_vendas
         from {{source('desafio_final_aw','salesorderheadersalesreason')}}
 ),
 
     motivo_venda as (
     select
     reasontype as tipo_motivo,	
-    modifieddate as data_modificacao_motivo_venda,
+    cast (modifieddate as date) as data_modificacao_motivo_venda,
     name as nome_motivo_venda,
     salesreasonid as id_motivo_venda
     from {{source('desafio_final_aw','salesreason')}}

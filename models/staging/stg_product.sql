@@ -12,7 +12,7 @@ with dados_produto as (
     sellenddate as data_venda_final,
     listprice as lista_preco_produto,
     productline as linha_produto,
-    modifieddate as data_modificacao_produto,
+    cast (modifieddate as date) as data_modificacao_produto,
     weightunitmeasurecode as peso_unidade_medida,
     sizeunitmeasurecode as tamanho_unidade_medida,
     size as tamanho,

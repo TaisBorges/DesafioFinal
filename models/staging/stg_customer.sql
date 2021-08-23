@@ -13,7 +13,7 @@ with dados_cliente as (
         lastname as ultimo_nome,
         firstname as primeiro_nome,
         persontype as tipo_pessoa,
-        modifieddate as data_modificacao_pessoa     
+        cast (modifieddate as date) as data_modificacao_pessoa     
         from {{source('desafio_final_aw','person')}}
     ),
 
@@ -21,7 +21,7 @@ with dados_cliente as (
         select 
         personid as id_pessoa,
         businessentityid as sk_entidade_negocio,
-        modifieddate as id_data_modificacao_contato_entidade_negocio
+        cast (modifieddate as date) as id_data_modificacao_contato_entidade_negocio
         from {{source('desafio_final_aw','businessentitycontact')}}
     ),
 
@@ -29,7 +29,7 @@ with dados_cliente as (
         select
         addressid as id_endereco,
         businessentityid as sk2_entidade_negocio,
-        modifieddate as data_modificacao_entidade_negocio
+        cast (modifieddate as date) as data_modificacao_entidade_negocio
         from{{source('desafio_final_aw','businessentityaddress')}}
     ),
         
@@ -55,7 +55,7 @@ with dados_cliente as (
             left join dados_pessoa p
             on en.sk_entidade_negocio = p.id_entidade_negocio
             left join dados_cliente c
-            on c.sk_pessoa = en.id_pessoa
+            on en.id_pessoa = c.sk_pessoa
             left join endereco_entidade_negocio een
             on een.sk2_entidade_negocio = p.id_entidade_negocio
 

@@ -1,7 +1,7 @@
 with vendedor as (
     select
     salesquota as cota_venda,
-    modifieddate as data_modificacao,
+    cast (modifieddate as date) as data_modificacao,
     saleslastyear as venda_ultimo_ano,	
     commissionpct as percentual_comissao,	
     territoryid as id_territorio,

@@ -6,7 +6,7 @@ with detalhe_pedido_venda as (
     specialofferid as id_oferta_especial,
     orderqty as quantidade_pedido,
     unitprice as preco_unitario,
-    modifieddate as data_modificacao_pedido_venda,
+    cast (modifieddate as date) as data_modificacao_pedido_venda,
     unitpricediscount as desconto_preco_unitario
     from {{source('desafio_final_aw','salesorderdetail')}}
     )

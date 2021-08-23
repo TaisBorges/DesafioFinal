@@ -1,0 +1,38 @@
+version: 2
+
+models:
+    - name: dim_cliente
+    description: "Tabela de dimensão cliente"
+    columns:
+        - name: sk_cliente
+        description: "Chave primária para essa tabela"
+        test:
+            - unique
+            - not_null
+
+    - name: dim_endereco
+        description: "Tabela de dimensão endereço"
+        columns:
+            - name: id_address
+            description: "Chave primária para essa tabela"
+            test:
+                - unique
+                - not_null
+            
+    - name: dim_produto
+        description: "Tabela de dimensão produto"
+        columns:
+            - name: id_produto
+            description: "Chave primária para essa tabela"
+            test:
+                - unique
+                - not_null
+                            
+    - name: fact_vendas
+        description: "Tabela de fato vendas"
+        columns:
+            - name: id_pedido
+            description: "Chave primária para essa tabela"
+            test:
+                - unique
+                - not_null

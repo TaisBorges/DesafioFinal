@@ -1,9 +1,9 @@
 with dados_endereco as (
     select
-    addressid as id_address,
+    addressid as id_endereco,
     stateprovinceid as fk_estado,
     city as cidade,
-    modifieddate as data_modificacao_endereco,
+    cast (modifieddate as date) as data_modificacao_endereco,
     postalcode as cep
     from {{source('desafio_final_aw','address')}}
     ),
@@ -12,7 +12,7 @@ with dados_endereco as (
         stateprovinceid as id_estado,
         territoryid as id_territorio,
         countryregioncode as fk_pais,
-        modifieddate as data_modificacao_estado,
+        cast (modifieddate as date) as data_modificacao_estado,
         name as estado,
         stateprovincecode as uf_estado        
         from {{source('desafio_final_aw','stateprovince')}}
@@ -20,13 +20,13 @@ with dados_endereco as (
     dados_pais as (
         select
         countryregioncode as id_pais,
-        modifieddate as data_modificacao_pais,
+        cast (modifieddate as date) as data_modificacao_pais,
         name as pais
         from {{source ('desafio_final_aw','countryregion')}}
     ),
     dados_localizacao as (
         select
-            --en.id_address,
+            en.id_endereco,
             en.cidade,
             --es.id_estado,
             es.estado,
