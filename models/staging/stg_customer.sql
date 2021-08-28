@@ -1,6 +1,5 @@
 with dados_cliente as (
     select 
-    --row_number() over (order by customerid) as sk_cliente, -- chave auto-incremental
     customerid as id_cliente,
     personid as sk_entidade_negocio,
     territoryid as id_territorio
@@ -63,14 +62,7 @@ with dados_cliente as (
             cast (modifieddate as date) as data_modificacao_entidade_negocio
         from {{source('desafio_final_aw', 'businessentity')}}
     ),
-    --endereco_entidade_negocio as (
-    --    select
-    --    addressid as id_endereco,
-    --    businessentityid as sk2_entidade_negocio,
-   --     addressid as fk_endereco,
-    --    cast (modifieddate as date) as data_modificacao_entidade_negocio
-    --    from{{source('desafio_final_aw','businessentityaddress')}}
-    --),
+    
     dados_endereco_tipo as (
         select 
             name as nome_endereco,
@@ -79,10 +71,8 @@ with dados_cliente as (
         from {{source('desafio_final_aw','addresstype')}}
     ),
     dados_negocio as (
--- preciso juntar as tabelas e ter a localização da entidade de negócio para relacionar o cliente com cidade, estado, país
         select
         en.id_entidade_negocio,
-        --ifnull(p.id_entidade_negocio, en.id_entidade_negocio) as id_entidade_negocio,
         trim( concat(p.primeiro_nome, ' ', p.ultimo_nome )) as nome_completo,
         --p.tipo_pessoa,
         p.estilo_nome,
@@ -122,9 +112,7 @@ with dados_cliente as (
             on cen.id_pessoa = ifnull(p.id_entidade_negocio, en.id_entidade_negocio) 
             left join dados_contato_comercial_tipo cct
             on cct.id_tipo_contato = cen.fk_tipo_contato
-           -- left join endereco_entidade_negocio een
-           -- on een.sk2_entidade_negocio = p.id_entidade_negocio
-
+           
     )
 
 select * from dados_negocio
