@@ -110,8 +110,8 @@ with dados_motivo_venda as (
           from dados_motivo_venda mv
           left join detalhe_pedido_venda pv
           on mv.id_pedido = pv.fk_pedido
-          left join cliente c
-          on c.id_cliente = mv.fk_cliente
+          --left join cliente c
+         -- on c.id_cliente = mv.fk_cliente
           left join endereco e
           on mv.fk_endereco = e.id_endereco
           left join produto p

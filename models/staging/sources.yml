@@ -18,9 +18,27 @@ sources:
       
       - name: businessentitycontact
         description: Essa é a tabela de contato da entidade de negócio do ERP.
+      
+      - name: businessentity
+        description: Essa é a tabela da entidade de negócio do ERP.
 
       - name: businessentityaddress
         description: Essa é a tabela de endereço da entidade de negócio do ERP.
+      
+      - name: emailaddress
+        description: Essa é a tabela de email do ERP.
+
+      - name: addresstype
+        description: Essa é a tabela do tipo de endereço do ERP.
+      
+      - name: personphone
+        description: Essa é a tabela de telefone do ERP.
+        
+      - name: phonenumbertype
+        description: Essa é a tabela do tipo de número de telefone do ERP.
+      
+      - name: contacttype
+        description: Essa é a tabela do tipo de contato do ERP.
         
       - name: stateprovince
         description: Essa é a tabela de estados do ERP.
