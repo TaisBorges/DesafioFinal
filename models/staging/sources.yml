@@ -1,0 +1,78 @@
+version: 2
+
+sources:
+  - name: desafio_final_aw
+    description: Essa é a fonte de dados do nosso ERP, criada através do Stitch
+    tables:
+      - name: employee
+        description: Essa é a tabela de funcionários do ERP.
+
+      - name: address
+        description: Essa é a tabela de endereço do ERP.
+        
+      - name: countryregion
+        description: Essa é a tabela de país do ERP.
+                  
+      - name: person
+        description: Essa é a tabela de pessoas do ERP.
+                        
+      - name: businessentitycontact
+        description: Essa é a tabela de contato da entidade de negócio do ERP.
+        
+      - name: businessentity
+        description: Essa é a tabela da entidade de negócio do ERP.
+                  
+      - name: businessentityaddress
+        description: Essa é a tabela de endereço da entidade de negócio do ERP.
+                        
+      - name: emailaddress
+        description: Essa é a tabela de email do ERP.
+        
+          
+      - name: addresstype
+        description: Essa é a tabela do tipo de endereço do ERP.
+                       
+      - name: personphone
+        description: Essa é a tabela de telefone do ERP.
+                          
+      - name: phonenumbertype
+        description: Essa é a tabela do tipo de número de telefone do ERP.
+                       
+      - name: contacttype
+        description: Essa é a tabela do tipo de contato do ERP.
+                          
+      - name: stateprovince
+        description: Essa é a tabela de estados do ERP.
+                  
+      - name: product
+        description: Essa é a tabela de produtos do ERP.
+                  
+      - name: creditcard
+        description: Essa é a tabela de cartão de crédito do ERP.
+                  
+      - name: employee_territories
+        description: Essa é a tabela de estados do ERP.
+        
+      - name: customer
+        description: Essa é a tabela de clientes do ERP.
+        
+      - name: salesorderdetail
+        description: Essa é a tabela de detalhe da ordem de venda do ERP.
+       
+      - name: salesorderheader
+        description: Essa é a tabela de cabeçalho da ordem de venda do ERP.
+                         
+      - name: salesorderheadersalesreason
+        description: Essa é a tabela de cabeçalho do motivo da ordem de venda do ERP.
+                        
+      - name: salesperson
+        description: Essa é a tabela do vendedor do ERP.
+                        
+      - name: salesreason
+        description: Essa é a tabela do motivo da ordem de venda do ERP.
+       
+      - name: salesterritory
+        description: Essa é a tabela do local de venda do ERP.
+        
+      - name: store
+        description: Essa é a tabela do estoque do ERP.         
